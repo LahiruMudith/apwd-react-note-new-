@@ -6,6 +6,7 @@ import Axios from "../../pages/Axios/Axios.jsx";
 import HomeMaxIcon from '@mui/icons-material/HomeMax';
 import Task1Icon from '../../assets/icons8-task-50.png'
 import Task1 from "../../pages/Task1/Task1.jsx";
+import Student from "../../pages/Student/Student.jsx";
 
 const routes = [
     {
@@ -35,6 +36,13 @@ const routes = [
         path: '/axiosTask1',
         component: <Task1/>,
         icon: <img src={Task1Icon} style={{width:'25px'}}/>
+    },
+    {
+        name: 'Student',
+        key: 'student',
+        path: '/student',
+        component: <Student/>,
+        icon: <InboxIcon/>
     }
 ]
 

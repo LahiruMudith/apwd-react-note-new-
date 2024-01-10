@@ -1,12 +1,10 @@
 
 import Box from "@mui/material/Box";
-import TextInputCard from "../../component/TextInputCard/TextInputCard.jsx";
-import axios from "axios";
 import {useState} from "react";
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import * as React from "react";
-import PostCard from "../../component/PostCard/PostCard.jsx";
+import instance from "../../services/axiosOrder.jsx";
 
 export default function Task1() {
     const [id, setId] = useState("")
@@ -31,7 +29,7 @@ export default function Task1() {
     }
 
     const postData = () => {
-        axios.post('https://jsonplaceholder.typicode.com/posts', {
+        instance.post('/posts', {
             title: title,
             body: body,
             userId: id,

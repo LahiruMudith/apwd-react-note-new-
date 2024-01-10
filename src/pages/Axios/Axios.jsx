@@ -1,9 +1,9 @@
-import axios from 'axios'
 import {useEffect, useState} from "react";
 import Button from "@mui/material/Button";
 import PostCard from "../../component/PostCard/PostCard.jsx";
 import Box from "@mui/material/Box";
 import {PropagateLoader} from "react-spinners";
+import instance from "../../services/axiosOrder.jsx";
 
 export default function Axios() {
 
@@ -16,7 +16,7 @@ export default function Axios() {
 
 
     const getData = () => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        instance.get('/posts')
             .then(function (response) {
                 // handle success
                 console.log(response.data);
@@ -33,7 +33,7 @@ export default function Axios() {
     }
 
     const postData = () => {
-        axios.post('https://jsonplaceholder.typicode.com/posts', {
+        instance.post('/posts', {
             title: 'user',
             body: 'userBody',
             userId: 1,
@@ -47,7 +47,7 @@ export default function Axios() {
     }
 
     const deleteData = () => {
-        axios.delete(`https://jsonplaceholder.typicode.com/posts/1`)
+        instance.delete(`/posts/1`)
             .then(response => {
                 console.log(`Deleted post with ID ${postIdToDelete}`);
             })
@@ -57,7 +57,7 @@ export default function Axios() {
     }
 
     const updateData = () => {
-        axios.put('https://jsonplaceholder.typicode.com/posts/1', {
+        instance.put('/posts/1', {
             id: 1,
             title: 'foo',
             body: 'bar',
