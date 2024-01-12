@@ -4,28 +4,15 @@ import {TextField} from "@mui/material";
 import Card from "@mui/material/Card";
 import {useState} from "react";
 
-export default function StudentGetCard({getStudent}) {
+export default function StudentGetCard({saveStudent}) {
     const [name, setName] = useState( "")
     const [address, setAddress] = useState( "")
     const [age, setAge] = useState( "")
     const [school, setSchool] = useState( "")
 
-    const onChangeName = (event) => {
-        setName(event.target.value)
-    }
-    const onChangeAddress = (event) => {
-        setAddress(event.target.value)
-    }
-    const onChangeAge = (event) => {
-        setAge(event.target.value)
-    }
-    const onChangeSchool = (event) => {
-        setSchool(event.target.value)
-    }
 
     const getStudentCard = () => {
-        const student = [name, address, age, school]
-        getStudent(student)
+        saveStudent({name: name, address:address, age:age, school:school})
     }
 
     return (
@@ -37,7 +24,7 @@ export default function StudentGetCard({getStudent}) {
                     fullWidth
                     label="Name"
                     variant="outlined"
-                    onChange={onChangeName}
+                    onChange={(val) =>setName(val.target.value)}
                 />
                 <br/>
                 <TextField
@@ -46,7 +33,7 @@ export default function StudentGetCard({getStudent}) {
                     fullWidth
                     label="Address"
                     variant="outlined"
-                    onChange={onChangeAddress}
+                    onChange={(val) => setAddress(val.target.value)}
                 />
                 <br/>
                 <TextField
@@ -55,7 +42,7 @@ export default function StudentGetCard({getStudent}) {
                     fullWidth
                     label="Age"
                     variant="outlined"
-                    onChange={onChangeAge}
+                    onChange={(val) => setAge(val.target.value)}
                 />
                 <br/>
                 <TextField
@@ -64,7 +51,8 @@ export default function StudentGetCard({getStudent}) {
                     fullWidth
                     label="School"
                     variant="outlined"
-                    onChange={onChangeSchool}
+                    onChange={(val) => setSchool(val.target.value)}
+
                 />
                 <br/>
                 <br/>

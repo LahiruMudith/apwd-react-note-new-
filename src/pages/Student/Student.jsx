@@ -9,23 +9,35 @@ import StudentGetCard from "../../component/StudentGetCard/StudentGetCard.jsx";
 export default function Student() {
     const [data, setData] = useState([])
 
-    const onClick = (student) => {
+    const studentDataSave = (val) => {
         const arr = [...data]
-        arr.push(student)
+        arr.push(val)
+        setData(arr)
+        console.log(data)
+    }
+    const studentDataDelete = (index) => {
+        const arr = [...data]
+        arr.splice(index,1)
         setData(arr)
         console.log(data)
     }
 
     return (
         <Box>
-            <StudentGetCard getStudent={(student) => onClick(student)}/>
+            <StudentGetCard saveStudent={(val)=> studentDataSave(val) }/>
             <Box sx={{backgroundColor:'#bdc3c7', marginTop:'50px', padding:'10px',  display:'flex', flexWrap:'wrap' }}>
                 {
                     data.map((val,index) =>  (
-                        <StudentCard name={val.0}/>
+                        <StudentCard
+                            key={index}
+                            name={val.name}
+                            address={val.address}
+                            age={val.age}
+                            school={val.school}
+                            deleteClick={() => studentDataDelete(index)}
+                        />
                     ))
                 }
-
             </Box>
         </Box>
 
